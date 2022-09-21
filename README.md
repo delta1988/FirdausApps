@@ -4,4 +4,4 @@ Perhitungan jadwal Sholat menggunakan metode Umm alQuro lunarcal<br>
 Kalender Hijriyah dengan library calendar ummalqura-calendar<br>
 berinteraksi dengan server menggunakan volley dan retroffit<br><br>
 Base URL Quran https://quran-endpoint.vercel.app/quran/<br>
-Base URL Hadits https://api.hadith.gading.dev/<br>
+Base URL Hadits https://hadis-api-id.vercel.app/<br>
