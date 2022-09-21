@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.masterweb.firdausapps.R;
 import com.masterweb.firdausapps.clasess.MasterFunction;
 import com.masterweb.firdausapps.clasess.Session;
+import com.masterweb.firdausapps.hadits.HaditsActivity;
 import com.masterweb.firdausapps.quran.QuranActivity;
 import com.masterweb.firdausapps.service.GPSTracker;
 
@@ -59,6 +60,11 @@ public class HomeActivity extends AppCompatActivity {
 
     public void quran(View view) {
         Intent intent = new Intent(getApplicationContext(), QuranActivity.class);
+        startActivity(intent);
+    }
+
+    public void hadits(View view) {
+        Intent intent = new Intent(getApplicationContext(), HaditsActivity.class);
         startActivity(intent);
     }
 }
