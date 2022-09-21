@@ -50,6 +50,8 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.MyViewHolder> 
         holder.list_report.setOnClickListener(v -> {
             Intent intent = new Intent(context, DetailHaditsActivity.class);
             intent.putExtra("slug",list_today.get(position).getSlug());
+            intent.putExtra("title",list_today.get(position).getName());
+            intent.putExtra("subtitle",Rupiah(list_today.get(position).getTotal())+" Hadits");
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent);

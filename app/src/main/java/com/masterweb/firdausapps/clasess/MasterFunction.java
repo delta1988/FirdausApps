@@ -202,9 +202,9 @@ public class MasterFunction {
                 waktu_alarm.set(Calendar.MILLISECOND, 0);
                 waktu_alarm_last.set(Calendar.SECOND, 0);
                 waktu_alarm_last.set(Calendar.MILLISECOND, 0);
-                next.setText(waktuadzannextshort);
-                next_time.setText(sdfjam.format(prayerTimes.getPrayTime(PrayersType.ASR)));
-                covertTimeToText(selisih,timer,sdfjam.format(prayerTimes.getPrayTime(PrayersType.ASR)),"\nMenjelang Waktu Ashar");
+                next.setText(waktuadzanskg);
+                next_time.setText(sdfjam.format(prayerTimes.getPrayTime(PrayersType.ZUHR)));
+                covertTimeToText(selisih,timer,sdfjam.format(prayerTimes.getPrayTime(PrayersType.ZUHR)),"\nMenjelang Waktu Dzuhur");
                 if (waktu_alarm.before(waktu_now)) {
                     waktushalat = 3;
                     waktuadzanskg = "Waktu Ashar";
