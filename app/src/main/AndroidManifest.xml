@@ -18,7 +18,7 @@
         android:theme="@style/Theme.FirdausApps"
         tools:targetApi="31">
         <activity
-            android:name=".DetailHaditsActivity"
+            android:name=".hadits.DetailHaditsActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
