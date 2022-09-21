@@ -30,9 +30,7 @@ import java.util.TimeZone;
 
 public class TimeCalculator {
 
-    /**
-     * Julian Day of 1970-01-01 midday.
-     */
+
     private static final double JAVA_DATE_EPOCH_JD = 2440588;
     private static final double UMM_AL_QURA_RAMADAN_ISHA_ADJUSTMENT = 2;
     private static final double UMM_AL_QURA_ISHA_ADJUSTMENT = 1.5;
@@ -47,25 +45,13 @@ public class TimeCalculator {
     private Double julianDay;
     private boolean umElQuraRamadanAdjustment;
 
-    /**
-     * Like calling {@code timeCalculationMethod(angle, false, TimeAdjustment.TWO_MINUTES_ZUHR)}.
-     *
-     * @param angle
-     * @return
-     */
+
     public TimeCalculator timeCalculationMethod(AngleCalculationType angle) {
         TimeAdjustment twoMinutesZuhrAdjustment = new TimeAdjustment(TWO_MINUTES_ZUHR);
         return timeCalculationMethod(angle, false, twoMinutesZuhrAdjustment);
     }
 
-    /**
-     * Set timeCalculationMethod and adjustment of calculation.
-     *
-     * @param angle          Fajr and Isha angle
-     * @param hanafiAsrRatio ratio of object's shadow to determine Asr time, whether Hanafi or majority
-     * @param adjustments    result adjustment
-     * @return self for chaining
-     */
+
     public TimeCalculator timeCalculationMethod(AngleCalculationType angle, boolean hanafiAsrRatio, TimeAdjustment adjustments) {
         this.angle = angle;
         this.asrRatio = hanafiAsrRatio ? ASR_RATIO_HANAFI : ASR_RATIO_MAJORITY;
@@ -78,15 +64,7 @@ public class TimeCalculator {
         return this;
     }
 
-    /**
-     * Set the location.
-     *
-     * @param latitude  latitude in degrees
-     * @param longitude longitude in degrees
-     * @param height    altitude/height of the place in meters
-     * @param timezone  timezone in hours, x means UTC+x
-     * @return self for chaining
-     */
+
     public TimeCalculator location(double latitude, double longitude, double height, double timezone) {
         this.latitude = latitude;
         this.longitude = longitude;
@@ -95,12 +73,7 @@ public class TimeCalculator {
         return this;
     }
 
-    /**
-     * Set the date.
-     *
-     * @param date
-     * @return self for chaining
-     */
+
     public TimeCalculator date(GregorianCalendar date) {
         this.julianDay = JulianDayUtil.gregorianToJulianDay(date.get(YEAR),
                 date.get(MONTH) + 1, date.get(DAY_OF_MONTH));
@@ -113,23 +86,13 @@ public class TimeCalculator {
         return date(g);
     }
 
-    /**
-     * Add the date by days.
-     *
-     * @param days
-     * @return
-     */
+
     public TimeCalculator dateRelative(int days) {
         this.julianDay += days;
         return this;
     }
 
-    /**
-     * Calculate the prayer times.
-     * <p>
-     * This timeCalculationMethod can be called several times. For example, you set the date
-     * and call this timeCalculationMethod, update the date to tomorrow and call this timeCalculationMethod.
-     */
+
     public PrayerTimes calculateTimes() {
         if (angle == null || julianDay == null || timezone == null)
             throw new IllegalStateException("Some calculation parameter is not initialized yet");

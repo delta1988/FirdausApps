@@ -55,12 +55,7 @@ public class JulianDayUtil {
     private static double DAYS_PER_YEAR = 365.25;
     private static double JULIAN_DAY_DELTA = 1.5;
 
-    /**
-     * Return hour angle in degrees, return positive or negative infinity if calculation
-     * cannot be performed.
-     * <p>
-     * Negative and positive infinity has special meaning.
-     */
+
     public static double hourAngle(double latitude, double sunAltitude, double declinationDegrees) {
         double cosHa = ((sinDeg(sunAltitude) - sinDeg(latitude) * sinDeg(declinationDegrees))
             / (cosDeg(latitude) * cosDeg(declinationDegrees)));

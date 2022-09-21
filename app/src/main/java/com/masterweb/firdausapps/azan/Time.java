@@ -11,9 +11,7 @@ import static java.lang.String.format;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-/**
- * Created by AhmedEltaher on 10/11/16.
- */
+
 public class Time implements Parcelable, Comparable<Time> {
     private final String TIME_FORMAT = "%02d:%02d:%02d";
     private int hour;

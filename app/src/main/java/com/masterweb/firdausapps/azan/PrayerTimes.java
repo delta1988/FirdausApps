@@ -45,9 +45,7 @@ public class PrayerTimes {
             return new Time(ceil(time * Constants.MINUTE_IN_HOUR) / Constants.SECOND_IN_MINUTE);
     }
 
-    /**
-     * Whether second is used, if not it will be zero and minute is rounded to the top (ceil).
-     */
+
     public boolean isUseSecond() {
         return useSecond;
     }

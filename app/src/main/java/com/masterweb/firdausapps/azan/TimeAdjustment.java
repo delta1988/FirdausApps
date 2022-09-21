@@ -2,9 +2,7 @@ package com.masterweb.firdausapps.azan;
 
 import com.masterweb.firdausapps.azan.types.BaseTimeAdjustmentType;
 
-/**
- * Created by AhmedEltaher on 10/11/16.
- */
+
 
 public class TimeAdjustment {
     /**

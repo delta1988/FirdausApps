@@ -10,9 +10,7 @@ import static com.masterweb.firdausapps.azan.util.MathUtil.tanDeg;
 import static java.lang.Math.abs;
 import static java.lang.Math.sqrt;
 
-/**
- * Created by AhmedEltaher on 13/11/16.
- */
+
 
 public class PrayerCalculator {
 

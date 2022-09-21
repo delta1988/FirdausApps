@@ -15,13 +15,7 @@ import com.google.maps.android.SphericalUtil;
 
 
 public class QiblaUtils {
-    /**
-     * Return qibla direction in degrees from the north (clock-wise).
-     *
-     * @param latitude  latitude in degrees
-     * @param longitude longitude in degrees
-     * @return 0 means north, 90 means east, 270 means west, etc
-     */
+
     public static double qibla(double latitude, double longitude) {
         double degrees = atan2Deg(sinDeg(KAABA_LONGITUDE - longitude),
             cosDeg(latitude) * tanDeg(KAABA_LATITUDE)
