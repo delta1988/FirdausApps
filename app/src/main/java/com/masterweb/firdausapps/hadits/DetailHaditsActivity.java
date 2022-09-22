@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
@@ -39,6 +40,10 @@ public class DetailHaditsActivity extends AppCompatActivity {
     List<DetailHaditsModel> dataArrayList;
     DetailHaditsAdapter adapter;
     RequestQueue requestQueue;
+    TextView total,total_halaman,halaman,prev,next;
+    int pages=1;
+    String url;
+    String kitab;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,20 +62,32 @@ public class DetailHaditsActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         dataArrayList = new ArrayList<>();
         requestQueue = Volley.newRequestQueue(getApplicationContext());
-        String url = "https://hadis-api-id.vercel.app/hadith/"+getIntent().getExtras().getString("slug")+"?page=1&limit=20";
-        parseJson(url);
+        kitab = getIntent().getExtras().getString("slug");
+        parseJson();
+        total = findViewById(R.id.total);
+        total_halaman = findViewById(R.id.total_halaman);
+        halaman = findViewById(R.id.halaman);
+        prev = findViewById(R.id.prev);
+        next = findViewById(R.id.next);
+        next.setOnClickListener(V->{
+            pages++;
+            parseJson();
+        });
     }
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();
         return true;
     }
-    private void parseJson(String url){
+    private void parseJson(){
+        url = "https://hadis-api-id.vercel.app/hadith/"+kitab+"?page="+pages+"&limit=20";
         loading.setVisibility(View.VISIBLE);
+        recyclerView.setVisibility(View.GONE);
         RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
         StringRequest stringRequest=new StringRequest(Request.Method.GET, url, new com.android.volley.Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                recyclerView.setVisibility(View.VISIBLE);
                 Log.d("viewprovider", "onResponse: "+response);
                 try{
                     JSONObject jsonObject=new JSONObject(response);
@@ -84,6 +101,21 @@ public class DetailHaditsActivity extends AppCompatActivity {
                         adapter = new DetailHaditsAdapter(getApplicationContext(),dataArrayList);
                         recyclerView.setAdapter(adapter);
                     }
+                    JSONObject pagination = jsonObject.getJSONObject("pagination");
+                    String totalItems = pagination.getString("totalItems");
+                    String currentPage = pagination.getString("currentPage");
+                    String pageSize = pagination.getString("pageSize");
+                    String totalPages = pagination.getString("totalPages");
+                    if (currentPage.matches("1")){
+                        next.setVisibility(View.VISIBLE);
+                    }else{
+                        next.setVisibility(View.VISIBLE);
+                        prev.setVisibility(View.VISIBLE);
+                    }
+
+                    total.setText("Total Hadits : "+totalItems+" Hadits");
+                    total_halaman.setText("Total Halaman : "+totalPages+" Halaman");
+                    halaman.setText("Halaman "+currentPage);
                     loading.setVisibility(View.GONE);
                 }catch (JSONException e){
                     e.printStackTrace();
