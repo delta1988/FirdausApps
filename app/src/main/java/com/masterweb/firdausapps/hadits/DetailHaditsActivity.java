@@ -73,6 +73,10 @@ public class DetailHaditsActivity extends AppCompatActivity {
             pages++;
             parseJson();
         });
+        prev.setOnClickListener(V->{
+            pages--;
+            parseJson();
+        });
     }
     @Override
     public boolean onSupportNavigateUp() {
