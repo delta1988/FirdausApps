@@ -21,7 +21,7 @@ public class StartActivity extends AppCompatActivity {
         masterFunction = new MasterFunction(getApplicationContext());
     }
 
-    public void mulai(View view) {
+    public void startApplication(View view) {
         session.createSession(masterFunction.device());
         Intent intent = new Intent(getApplicationContext(),HomeActivity.class);
         startActivity(intent);

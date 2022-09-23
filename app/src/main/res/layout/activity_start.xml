@@ -38,17 +38,22 @@
             android:text="Aplikasi Alquran Digital yang bersumber dari Kementrian Agama RI, Jadwal Sholat sesuai lokasi aplikasi dibuka, kalender hijriyah, 9 Kitab Hadits, dan tersedia fasilitas lainnya yang dikemas dalam satu aplikasi Firdaus Apps"
             />
     </LinearLayout>
+
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_margin="20dp"
-        app:backgroundTint="@null"
+        android:layout_marginStart="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/button"
-        android:text="Yuk Kita Mulai..."
         android:fontFamily="@font/popin"
+        android:onClick="startApplication"
+        android:text="Yuk Kita Mulai..."
         android:textAllCaps="false"
         android:textSize="18sp"
-        android:onClick="mulai"
-        />
+        app:backgroundTint="@null" />
 </RelativeLayout>

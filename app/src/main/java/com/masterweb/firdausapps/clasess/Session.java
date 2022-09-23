@@ -38,7 +38,7 @@ public class Session {
     }
 
     public void checkLogin(){
-        if (!this.is_login()){
+        if (!this.masuk()){
             Intent intent = new Intent(context, StartActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -52,7 +52,7 @@ public class Session {
     }
 
 
-    private boolean is_login() {
+    private boolean masuk() {
         return pref.getBoolean(is_login, false);
     }
 

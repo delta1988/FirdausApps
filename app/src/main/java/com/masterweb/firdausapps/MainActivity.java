@@ -11,7 +11,6 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.Toast;
-
 import com.masterweb.firdausapps.clasess.Session;
 
 import java.util.ArrayList;
@@ -33,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     }
     protected void checkPermissions() {
         final List<String> missingPermissions = new ArrayList<String>();
-        // check all required dynamic permissions
+
         for (final String permission : REQUIRED_SDK_PERMISSIONS) {
             final int result = ContextCompat.checkSelfPermission(this, permission);
             if (result != PackageManager.PERMISSION_GRANTED) {
